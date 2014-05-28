@@ -1,30 +1,28 @@
 /* global describe, it */
 
-
-// [i] has to be less than the array length
-// Fade needs to be a boolean value
-// i has to be >= 0? 
-
 (function () {
     'use strict';
-    var i = 0;
-    describe('Image Looper', function () {
-        it('should loop through an array of images', function () {
-        	expect(i).to.be.below(imgList.length);
-        });
-    });
 
-    describe('Fade Animation', function () {
-        it('should fade in and fade out after first image has loaded', function () {
-        	var i = 1;
-        	expect(1).to.be.true;
+    describe('slideshow() function which generates a slideshow', function () {
+        it('should only accept an array for its images argument', function () {
+        	var badSlideshow = function () {
+        		slideshow("bad")
+        	}
+        	expect(badSlideshow).to.throw(Error);
         });
-    }); 
 
-    describe('', function () {
-        it('should run here few assertions', function () {
-        	var answer = 2;
-        	expect(2).to.equal(answer);
+        it('should not accept an empty array for its images argument', function () {
+        	var emptyArray = function () {
+        		slideshow([])
+        	}
+        	expect(emptyArray).to.throw(Error);
         });
-    });
+
+	    it('should have a transition duration', function (){ 
+	    	var noDuration = function () {
+	    		slideshow([""], null)
+	    	}
+	    	expect(noDuration).to.throw(Error);
+	    });
+	});
 })();
